@@ -2,3 +2,5 @@ newWebComp.html
 log
 *.log
 logs
+credentials.pub
+credentials
