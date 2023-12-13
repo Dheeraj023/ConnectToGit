@@ -1,3 +1,3 @@
 echo "Hello...."
 
-cat newWebComp.html
+echo "Pipeline Created..."
