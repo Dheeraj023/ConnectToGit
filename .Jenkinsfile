@@ -1,7 +1,7 @@
 pipeline {
   agent none
   tools{
-        dockerTool 'docker'
+        dockerTool 'DockerContainer'
   }
   stages {
   	stage('Maven Install') {
