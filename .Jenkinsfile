@@ -1,4 +1,25 @@
 pipeline {
+	agent none
+  stages {
+  	stage('Maven Install') {
+    	agent {
+      	docker {
+        	image 'maven:3.5.0'
+        }
+      }
+      steps {
+      	sh 'mvn clean install'
+      }
+    }
+    stage('Docker Build') {
+    	agent any
+      steps {
+      	sh 'docker build -t shanem/spring-petclinic:latest .'
+      }
+    }
+  }
+}
+/* pipeline {
     agent any
     // agent { docker { image 'python:3.12.1-alpine3.19' } }
     parameters {
@@ -21,4 +42,4 @@ pipeline {
         }
     }
     
-}
+}*/
