@@ -1,26 +1,19 @@
 pipeline {
-  agent none
-  tools{
+    agent any
+    tools {
+        // Ensure 'docker' refers to the tool installation defined in Global Tool Configuration
         dockerTool 'docker'
-  }
-  stages {
-  	stage('Maven Install') {
-    	agent {
-      	docker {
-        	image 'maven:3.5.0'
+    }
+    stages {
+        stage('Build and Push') {
+            steps {
+                script {
+                    // Your Docker commands here
+                    echo "test"
+                }
+            }
         }
-      }
-      steps {
-      	sh 'mvn clean install'
-      }
     }
-    stage('Docker Build') {
-    	agent any
-      steps {
-      	sh 'docker build -t shanem/spring-petclinic:latest .'
-      }
-    }
-  }
 }
 /* pipeline {
     agent any
