@@ -4,7 +4,7 @@ pipeline {
         string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
     }
     stages {
-        stage('Example') {
+        stage('Variable Declaration in Jenkins') {
             steps {
                 echo "${params.Greeting} World!"
             }
