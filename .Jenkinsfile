@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+    // agent any
+    agent { docker { image 'python:3.12.1-alpine3.19' } }
     parameters {
         string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
     }
@@ -8,6 +9,12 @@ pipeline {
             steps {
                 echo "${params.Greeting} World!"
             }
+        }   
+        stage('build') {
+            steps {
+                sh 'python --version'
+            }
         }
     }
+    
 }
