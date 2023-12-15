@@ -1,5 +1,25 @@
 pipeline {
     agent any
+    stages {
+        stage('Install Docker') {
+            steps {
+                script {
+                    sh 'curl -fsSL https://get.docker.com | sudo sh'
+                }
+            }
+        }
+        stage('Build and Push') {
+            steps {
+                script {
+                    sh 'docker --version'
+                    echo "test"
+                }
+            }
+        }
+    }
+}
+/*pipeline {
+    agent any
     tools {
         // Ensure 'docker' refers to the tool installation defined in Global Tool Configuration
         dockerTool 'docker'
